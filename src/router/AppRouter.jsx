@@ -1,8 +1,32 @@
 import React from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Layout from '../layouts/Layout'
+import Dashboard from "../Pages/Dashboard/Dashboard"
+import Jobs from "../Pages/Dashboard/Jobs"
+import Applicants from '../Pages/Dashboard/Applicants'
+import Tags from '../Pages/Dashboard/Tags'
+import Login from "../Pages/Auth/Login"
+import Categories from '../Pages/Dashboard/Categories'
 
 const AppRouter = () => {
     return (
-        <div>AppRouter</div>
+        <BrowserRouter>
+            <Routes>
+                {/* ALL dashboard pages go inside the Layout */}
+                <Route element={<Layout />}>
+
+                    <Route path="/" element={<Dashboard />} />
+                    <Route path="/jobs" element={<Jobs />} />
+                    <Route path="/applicants" element={<Applicants />} />
+                    <Route path="/category" element={<Categories />} />
+                    <Route path="/tags" element={<Tags />} />
+
+                </Route>
+
+                {/* Optional: auth pages */}
+                <Route path="/login" element={<Login />} />
+            </Routes>
+        </BrowserRouter>
     )
 }
 

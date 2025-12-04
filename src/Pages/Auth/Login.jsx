@@ -1,9 +1,9 @@
-
+import React from 'react'
 
 const Login = () => {
     return (
         <>
-            <p>Login Page</p>
+            <p className='text-9xl text-center'>Login Page</p>
         </>
     )
 }

@@ -1,11 +1,10 @@
 import React from 'react'
-import Button from './Components/Button/Button'
-import Layout from './layouts/Layout'
+import AppRouter from './router/AppRouter'
 
 const App = () => {
   return (
     <div>
-      <Layout />
+      <AppRouter />
     </div>
   )
 }

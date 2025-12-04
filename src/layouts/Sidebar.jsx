@@ -1,132 +1,129 @@
 import * as React from "react";
 import {
     Drawer,
-    AppBar,
-    Toolbar,
-    IconButton,
     List,
     ListItemButton,
     ListItemIcon,
     ListItemText,
     Box,
-    Typography,
+    IconButton
 } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
+
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import WorkIcon from "@mui/icons-material/Work";
 import PeopleIcon from "@mui/icons-material/People";
-import SettingsIcon from "@mui/icons-material/Settings";
+import CategoryIcon from "@mui/icons-material/Category";
+import LocalOfferIcon from "@mui/icons-material/LocalOffer";
+import { useNavigate } from "react-router-dom";
 
-const drawerWidth = 240;
+const drawerWidth = 290;
 
-const Sidebar = () => {
-    const [mobileOpen, setMobileOpen] = React.useState(false);
+const Sidebar = ({ open, toggleDrawer }) => {
 
-    const handleDrawerToggle = () => {
-        setMobileOpen(!mobileOpen);
-    };
+    const navigate = useNavigate();
 
     const drawer = (
-        <Box sx={{ p: 2 }}>
+        <Box sx={{ px: 2.5 }}>
+            {/* Logo + Close Button (mobile only) */}
+            <Box
+                sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    mt: 4,
+                    mb: 4,
+                }}
+            >
+                <img
+                    src="/logo-dark.svg"
+                    alt="logo"
+                    style={{ width: 200, height: "auto" }}
+                />
 
-            {/* Logo + Close Button */}
-            <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", mb: 3 }}>
-                <Typography variant="h6" sx={{ fontWeight: 700 }}>
-                    LOGO
-                </Typography>
-
-                {/* Close Sidebar Button (for mobile) */}
                 <IconButton
-                    onClick={handleDrawerToggle}
-                    sx={{ display: { xs: "block", sm: "none" } }}   // ONLY visible on mobile
+                    onClick={toggleDrawer}
+                    sx={{ display: { xs: "block", sm: "none" } }}
                 >
                     <ChevronLeftIcon />
                 </IconButton>
             </Box>
 
+            {/* Sidebar links */}
             <List>
-                <ListItemButton>
-                    <ListItemIcon><DashboardIcon /></ListItemIcon>
+                <ListItemButton sx={{ gap: 2 }} onClick={() => navigate("/")}>
+                    <ListItemIcon sx={{ minWidth: 0 }}>
+                        <DashboardIcon />
+                    </ListItemIcon>
                     <ListItemText primary="Overview" />
                 </ListItemButton>
 
-                <ListItemButton>
-                    <ListItemIcon><WorkIcon /></ListItemIcon>
+                <ListItemButton sx={{ gap: 2 }} onClick={() => navigate("/jobs")}>
+                    <ListItemIcon sx={{ minWidth: 0 }}>
+                        <WorkIcon />
+                    </ListItemIcon>
                     <ListItemText primary="Jobs" />
                 </ListItemButton>
 
-                <ListItemButton>
-                    <ListItemIcon><PeopleIcon /></ListItemIcon>
+                <ListItemButton sx={{ gap: 2 }} onClick={() => navigate("/applicants")}>
+                    <ListItemIcon sx={{ minWidth: 0 }}>
+                        <PeopleIcon />
+                    </ListItemIcon>
                     <ListItemText primary="Applicants" />
                 </ListItemButton>
 
-                <ListItemButton>
-                    <ListItemIcon><CategoryIcon /></ListItemIcon>
+                <ListItemButton sx={{ gap: 2 }} onClick={() => navigate("/category")}>
+                    <ListItemIcon sx={{ minWidth: 0 }}>
+                        <CategoryIcon />
+                    </ListItemIcon>
                     <ListItemText primary="Categories" />
                 </ListItemButton>
 
-                <ListItemButton>
-                    <ListItemIcon><LocalOfferIcon /></ListItemIcon>
+                <ListItemButton sx={{ gap: 2 }} onClick={() => navigate("/tags")}>
+                    <ListItemIcon sx={{ minWidth: 0 }}>
+                        <LocalOfferIcon />
+                    </ListItemIcon>
                     <ListItemText primary="Tags" />
                 </ListItemButton>
             </List>
         </Box>
     );
 
-
     return (
-        <Box sx={{ display: "flex" }}>
-            {/* TOPBAR */}
-            <AppBar position="fixed" sx={{ zIndex: 1201 }}>
-                <Toolbar>
-                    {/* Mobile Menu Button */}
-                    <IconButton
-                        color="inherit"
-                        edge="start"
-                        onClick={handleDrawerToggle}
-                        sx={{ display: { sm: "none" } }}
-                    >
-                        <MenuIcon />
-                    </IconButton>
-
-                    <Typography variant="h6" noWrap>
-                        Dashboard
-                    </Typography>
-                </Toolbar>
-            </AppBar>
-
-            {/* MOBILE DRAWER */}
+        <>
+            {/* Mobile Drawer */}
             <Drawer
                 variant="temporary"
-                open={mobileOpen}
-                onClose={handleDrawerToggle}
+                open={open}
+                onClose={toggleDrawer}
                 ModalProps={{ keepMounted: true }}
                 sx={{
                     display: { xs: "block", sm: "none" },
-                    "& .MuiDrawer-paper": { width: drawerWidth },
+                    "& .MuiDrawer-paper": {
+                        width: drawerWidth,
+                    },
                 }}
             >
                 {drawer}
             </Drawer>
 
-            {/* DESKTOP DRAWER */}
+            {/* Desktop Drawer */}
             <Drawer
                 variant="permanent"
                 open
                 sx={{
                     display: { xs: "none", sm: "block" },
-                    "& .MuiDrawer-paper": { width: drawerWidth, boxSizing: "border-box" },
+                    "& .MuiDrawer-paper": {
+                        width: drawerWidth,
+                        boxSizing: "border-box",
+                    },
                 }}
             >
                 {drawer}
             </Drawer>
-
-            {/* MAIN CONTENT */}
-            <Box component="main" sx={{ flexGrow: 1, p: 3, mt: 8 }}>
-                Your dashboard content goes here.
-            </Box>
-        </Box>
+        </>
     );
-}
+};
 
-export default Sidebar
+export default Sidebar;

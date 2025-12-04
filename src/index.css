@@ -7,11 +7,9 @@
 @layer utilities {
   .bg-custom-gradient {
     background: linear-gradient(90deg, rgb(84, 47, 140), rgb(132, 72, 187));
-    padding: 10px 8px;
-    border-radius: 8px;
   }
 
-  .text-mint {
-    color: var(--color-mint-500);
+  .primary-color {
+    color: #4d179a;
   }
 }
