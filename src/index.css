@@ -6,10 +6,17 @@
 
 @layer utilities {
   .bg-custom-gradient {
-    background: linear-gradient(90deg, rgb(84, 47, 140), rgb(132, 72, 187));
+    background: linear-gradient(90deg, rgba(84, 47, 140, 0.3), rgba(131, 72, 187, 0.3));
   }
 
   .primary-color {
     color: #4d179a;
+  }
+}
+
+@layer utilities {
+  .bg-primary-color {
+    background-color: #4d179a;
+    /* Use your primary color directly */
   }
 }

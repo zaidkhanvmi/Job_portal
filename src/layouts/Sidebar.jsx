@@ -16,13 +16,26 @@ import WorkIcon from "@mui/icons-material/Work";
 import PeopleIcon from "@mui/icons-material/People";
 import CategoryIcon from "@mui/icons-material/Category";
 import LocalOfferIcon from "@mui/icons-material/LocalOffer";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const drawerWidth = 290;
 
 const Sidebar = ({ open, toggleDrawer }) => {
 
+    const location = useLocation();
     const navigate = useNavigate();
+
+    // List of menu items
+    const menu = [
+        { name: "Overview", path: "/", icon: <DashboardIcon /> },
+        { name: "Jobs", path: "/jobs", icon: <WorkIcon /> },
+        { name: "Applicants", path: "/applicants", icon: <PeopleIcon /> },
+        { name: "Categories", path: "/category", icon: <CategoryIcon /> },
+        { name: "Tags", path: "/tags", icon: <LocalOfferIcon /> },
+    ];
+
+    // Function to check active route
+    const isActive = (path) => location.pathname === path;
 
     const drawer = (
         <Box sx={{ px: 2.5 }}>
@@ -52,40 +65,39 @@ const Sidebar = ({ open, toggleDrawer }) => {
 
             {/* Sidebar links */}
             <List>
-                <ListItemButton sx={{ gap: 2 }} onClick={() => navigate("/")}>
-                    <ListItemIcon sx={{ minWidth: 0 }}>
-                        <DashboardIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="Overview" />
-                </ListItemButton>
+                {menu.map((item) => (
+                    <ListItemButton
+                        key={item.path}
+                        onClick={() => navigate(item.path)}
+                        sx={{
+                            gap: 2,
+                            borderRadius: 2,
+                            mt: 0.5,
+                            // ⭐ ACTIVE STYLING
+                            backgroundColor: isActive(item.path) ? "transparent" : "transparent",
+                            paddingY: "10px",
+                        }}
+                        className={`${isActive(item.path)
+                            ? "bg-custom-gradient primary-color"
+                            : "hover:bg-gray-100"
+                            }`}
+                    >
+                        <ListItemIcon sx={{ minWidth: 0, color: isActive(item.path) ? "#4d179a" : "", }}>
+                            {item.icon}
+                        </ListItemIcon>
 
-                <ListItemButton sx={{ gap: 2 }} onClick={() => navigate("/jobs")}>
-                    <ListItemIcon sx={{ minWidth: 0 }}>
-                        <WorkIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="Jobs" />
-                </ListItemButton>
-
-                <ListItemButton sx={{ gap: 2 }} onClick={() => navigate("/applicants")}>
-                    <ListItemIcon sx={{ minWidth: 0 }}>
-                        <PeopleIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="Applicants" />
-                </ListItemButton>
-
-                <ListItemButton sx={{ gap: 2 }} onClick={() => navigate("/category")}>
-                    <ListItemIcon sx={{ minWidth: 0 }}>
-                        <CategoryIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="Categories" />
-                </ListItemButton>
-
-                <ListItemButton sx={{ gap: 2 }} onClick={() => navigate("/tags")}>
-                    <ListItemIcon sx={{ minWidth: 0 }}>
-                        <LocalOfferIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="Tags" />
-                </ListItemButton>
+                        <ListItemText
+                            primary={item.name}
+                            sx={{
+                                "& span": {
+                                    fontSize: 14,
+                                    fontWeight: isActive(item.path) ? 600 : 400,
+                                    color: isActive(item.path) ? "#4d179a" : "#333", // text color
+                                },
+                            }}
+                        />
+                    </ListItemButton>
+                ))}
             </List>
         </Box>
     );
