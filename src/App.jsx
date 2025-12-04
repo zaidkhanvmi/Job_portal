@@ -1,8 +1,12 @@
 import React from 'react'
+import Button from './Components/Button/Button'
+import Layout from './layouts/Layout'
 
 const App = () => {
   return (
-    <div>App</div>
+    <div>
+      <Layout />
+    </div>
   )
 }
 
