@@ -37,7 +37,8 @@ const Login = () => {
 
     return (
         <div className='relative flex flex-col justify-center w-full h-screen lg:flex-row sm:p-0'>
-            <div className='flex flex-col flex-1'>
+
+            <div className='flex flex-col flex-1 p-5'>
                 <div className="flex flex-col justify-center flex-1 w-full max-w-md mx-auto">
                     <div>
                         <div className="mb-5 sm:mb-8">
@@ -92,7 +93,22 @@ const Login = () => {
                     </form>
                 </div>
             </div>
-            <div className='bg-[#161950]'></div>
+
+            <div className='bg-[#161950] items-center hidden w-full h-full lg:w-1/2 bg-brand-950 dark:bg-white/5 lg:grid bg-repeat'>
+                <div className="relative flex items-center justify-center z-1">
+                    <div className='absolute right-0 top-0 -z-1 w-full max-w-[250px] xl:max-w-[450px]'>
+                        <img src="/loginBg.svg" alt="" />
+                    </div>
+                    <div className="absolute bottom-0 left-0 -z-1 w-full max-w-[250px] rotate-180 xl:max-w-[450px]">
+                        <img src="/loginBg.svg" alt="" />
+                    </div>
+                    <div className='flex flex-col items-center max-w-xs'>
+                        <img src="/logo.png" alt="" />
+                        <p className='text-center text-gray-400 dark:text-white/60 mt-2'>Your digital partner for every marketing execution.</p>
+                    </div>
+                </div>
+            </div>
+
         </div>
     );
 };
