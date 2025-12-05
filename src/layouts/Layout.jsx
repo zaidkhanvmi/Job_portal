@@ -21,8 +21,10 @@
 import { useState } from "react";
 import Sidebar from "./Sidebar";
 import Navbar from "../Components/common/Navbar";
+import { Outlet } from "react-router-dom";
 
-const Layout = ({ children }) => {
+const Layout = () => {
+
     const [open, setOpen] = useState(false);
 
     const toggleDrawer = () => setOpen(!open);
@@ -38,7 +40,7 @@ const Layout = ({ children }) => {
 
             {/* Main Content */}
             <div className="flex-1 min-h-screen overflow-y-auto p-6 mt-[64px] lg:ml-[290px]">
-                {children}
+                <Outlet />
             </div>
 
         </div>

@@ -2,7 +2,11 @@ import React from 'react'
 
 const Jobs = () => {
   return (
-    <div>Jobs</div>
+    <div>
+      <h1 className="text-9xl">
+        This is Jobs page
+      </h1>
+    </div>
   )
 }
 

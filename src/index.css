@@ -20,3 +20,7 @@
     /* Use your primary color directly */
   }
 }
+
+.no-focus-border:focus {
+  outline: none;
+}
