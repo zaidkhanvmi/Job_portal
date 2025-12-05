@@ -100,7 +100,7 @@ const Login = () => {
 
                         <button
                             type="submit"
-                            className="mt-2 inline-flex w-full items-center justify-center rounded-full bg-[#4d179a] px-6 py-2.5 text-sm font-semibold tracking-wide text-white shadow-md hover:brightness-110 active:brightness-95 transition-all"
+                            className="mt-2 inline-flex w-full items-center justify-center rounded-lg bg-[#4d179a] px-6 py-2.5 text-sm font-semibold tracking-wide text-white shadow-md hover:brightness-110 active:brightness-95 transition-all"
                         >
                             SIGN IN
                         </button>

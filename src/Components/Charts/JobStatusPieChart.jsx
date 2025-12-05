@@ -24,8 +24,8 @@ const JobStatusPieChart = ({ data }) => {
                 {/* For bg glow */}
                 {/* <div className="absolute inset-0 rounded-3xl bg-custom-gradient opacity-20 blur-2xl"></div> */}
 
-                <h2 className="text-lg font-semibold mb-4 text-gray-800">
-                    📊 Job Status Distribution
+                <h2 className="text-xl font-semibold mb-4 primary-color">
+                    Job Status Distribution
                 </h2>
 
                 <div style={{ width: "100%", height: 300 }}>

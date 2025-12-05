@@ -5,8 +5,18 @@ import JobStatusPieChart from '../../Components/Charts/JobStatusPieChart';
 import WeeklyApplicants from '../../Components/Charts/WeeklyApplicants';
 import ApplicantsByCategory from '../../Components/Charts/ApplicantsByCategory';
 import MonthlyFunnel from '../../Components/Charts/MonthlyFunnel';
+import TopJobsChart from '../../Components/Charts/TopJobsChart';
+import KPISection from "../../Components/Charts/KPISection";
+
 
 const Dashboard = () => {
+
+  const kpiStats = [
+    { id: "applications", label: "Total Applications", value: 1240, trend: 12 },
+    { id: "jobsPosted", label: "Jobs Posted", value: 42, trend: -3 },
+    { id: "conversions", label: "Conversions", value: "8.4%", trend: 5 },
+    { id: "growth", label: "Weekly Growth", value: "23%", trend: 9 }
+  ];
 
   const applicationData = [
     { month: "Jan", applications: 40 },
@@ -50,14 +60,30 @@ const Dashboard = () => {
     { name: "Hired", value: 340 }
   ];
 
+  const topJobsChartData = [
+    { title: "Senior Software Engineer", applicants: 124 },
+    { title: "Product Designer", applicants: 98 },
+    { title: "Marketing Manager", applicants: 74 },
+    { title: "HR Specialist", applicants: 60 },
+    { title: "Finance Analyst", applicants: 45 }
+  ];
+
   return (
     <>
-      <div className='grid grid-cols-1 md:grid-cols-2 gap-x-1.5 gap-y-5'>
-        <ApplicationsChart data={applicationData} />
-        <JobStatusPieChart data={jobStatusData} />
-        <WeeklyApplicants data={weeklyApplicants} />
-        <ApplicantsByCategory data={categoryData} />
-        <MonthlyFunnel data={funnelData} />
+      <div className="space-y-6">
+
+        {/* KPI Section */}
+        <KPISection stats={kpiStats} />
+
+        {/* Charts */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <ApplicationsChart data={applicationData} />
+          <JobStatusPieChart data={jobStatusData} />
+          <WeeklyApplicants data={weeklyApplicants} />
+          <ApplicantsByCategory data={categoryData} />
+          <MonthlyFunnel data={funnelData} />
+          <TopJobsChart data={topJobsChartData} />
+        </div>
       </div>
     </>
   )

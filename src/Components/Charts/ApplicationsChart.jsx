@@ -21,8 +21,8 @@ const ApplicationsChart = ({ data }) => {
             }}
         >
             <CardContent>
-                <h2 className="text-xl font-semibold mb-4 text-gray-800">
-                    📈 Applications Over Time
+                <h2 className="text-xl font-semibold mb-4 primary-color">
+                    Applications Over Time
                 </h2>
 
                 <div style={{ width: "100%", height: 320 }}>
