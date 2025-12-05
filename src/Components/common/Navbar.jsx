@@ -51,7 +51,7 @@ const Navbar = ({ toggleDrawer }) => {
 
         {/* Avatar button */}
         <IconButton onClick={handleOpenMenu}>
-          <Avatar src="/profile.jpg" />
+          <Avatar src="favicon.ico" />
         </IconButton>
 
         {/* Avatar dropdown menu */}
