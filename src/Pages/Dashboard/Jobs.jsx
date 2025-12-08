@@ -46,7 +46,6 @@ const Jobs = () => {
 
   return (
     <div>
-      <h1 className='text-2xl font-bold mb-5'>All Jobs</h1>
       <JobsTable />
     </div>
   )

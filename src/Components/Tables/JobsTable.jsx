@@ -30,10 +30,10 @@ const JobsTable = () => {
     const navigate = useNavigate();
 
     const columns = [
-        { field: "title", headerName: "Job Title", flex: 1, sortable: true },
+        { field: "title", headerName: "Job Title", flex: 2, sortable: true },
         { field: "category", headerName: "Category", flex: 1 },
         { field: "location", headerName: "Location", flex: 1 },
-        { field: "salary", headerName: "Salary", flex: 1 },
+        { field: "salary", headerName: "Salary", flex: 2 },
         {
             field: "status",
             headerName: "Job Status",
@@ -76,7 +76,7 @@ const JobsTable = () => {
             sortable: false,
             filterable: false,
             renderCell: (params) => (
-                <div className="flex gap-1">
+                <div className="flex h-full flex-row items-center justify-start gap-1">
                     <button
                         onClick={() => navigate(`/view-job/${params.row.id}`)}
                         className="cursor-pointer primary-color rounded-md"
@@ -106,6 +106,9 @@ const JobsTable = () => {
                 backdropFilter: "blur(10px)",
             }}
         >
+            <h2 className="text-xl primary-color font-semibold mb-3">
+                All Jobs ({jobList.length})
+            </h2>
             <DataGrid
                 rows={jobList}
                 columns={columns}

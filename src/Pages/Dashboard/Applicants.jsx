@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import ApplicantsTable from '../../Components/Tables/ApplicantsTable'
+import { JobContext } from '../../Context'
 
 const Applicants = () => {
+
+  const { applicantList } = useContext(JobContext);
+
   return (
     <div>
-      <h1 className="text-9xl">
-        This is Applicants page
-      </h1>
+      <ApplicantsTable data={applicantList} />
     </div>
   )
 }
