@@ -7,6 +7,7 @@ import Applicants from '../Pages/Dashboard/Applicants'
 import Tags from '../Pages/Dashboard/Tags'
 import Login from "../Pages/Auth/Login"
 import Categories from '../Pages/Dashboard/Categories'
+import JobDetails from '../Pages/Jobs/JobDetails'
 
 const AppRouter = () => {
     return (
@@ -17,6 +18,7 @@ const AppRouter = () => {
 
                     <Route path="/" element={<Dashboard />} />
                     <Route path="/jobs" element={<Jobs />} />
+                    <Route path="/view-job/:id" element={<JobDetails />} />
                     <Route path="/applicants" element={<Applicants />} />
                     <Route path="/category" element={<Categories />} />
                     <Route path="/tags" element={<Tags />} />
