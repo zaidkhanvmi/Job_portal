@@ -1,6 +1,6 @@
 import React from "react";
 import { DataGrid } from "@mui/x-data-grid";
-import { Card } from "@mui/material";
+import { Button, Card } from "@mui/material";
 import { Star, Eye } from "lucide-react";
 import { Chip } from "@mui/material";
 import { useNavigate } from "react-router-dom";
@@ -98,9 +98,11 @@ const ApplicantsTable = ({ data }) => {
                 boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
             }}
         >
-            <h2 className="text-xl primary-color font-semibold mb-3">
-                All Applicants ({data.length})
-            </h2>
+            <div className="flex flex-row items-center justify-between">
+                <h2 className="text-xl primary-color font-semibold mb-3">
+                    All Applicants ({data.length})
+                </h2>
+            </div>
 
             <DataGrid
                 rows={data}

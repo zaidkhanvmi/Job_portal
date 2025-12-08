@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { DataGrid } from "@mui/x-data-grid";
-import { Switch, Card } from "@mui/material";
+import { Switch, Card, Button } from "@mui/material";
 import { Eye, Pen } from "lucide-react";
 import { JobContext } from "../../Context";
 import { useNavigate } from "react-router-dom";
@@ -95,9 +95,24 @@ const JobsTable = () => {
                 backdropFilter: "blur(10px)",
             }}
         >
-            <h2 className="text-xl primary-color font-semibold mb-3">
-                All Jobs ({jobList.length})
-            </h2>
+            <div className="flex flex-row items-center justify-between">
+                <h2 className="text-xl primary-color font-semibold mb-3">
+                    All Jobs ({jobList.length})
+                </h2>
+                <Button
+                    onClick={() => navigate("/jobs")}
+                    variant="contained"
+                    sx={{
+                        mb: 3,
+                        borderRadius: "14px",
+                        padding: "6px 14px",
+                        textTransform: "none",
+                        backgroundColor: "#4d179a"
+                    }}
+                >
+                    Add Job
+                </Button>
+            </div>
             <DataGrid
                 rows={jobList}
                 columns={columns}

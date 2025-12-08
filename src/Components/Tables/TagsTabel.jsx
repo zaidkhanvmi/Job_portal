@@ -1,25 +1,19 @@
 import React from "react";
 import { Button, Card, CardContent, Switch } from "@mui/material";
-import { Eye, Star, Plus, MoreHorizontal, ArrowLeft } from "lucide-react";
+import { Eye, Star, Plus, MoreHorizontal, ArrowLeft, Trash } from "lucide-react";
 import { DataGrid } from "@mui/x-data-grid";
+import { Add } from "@mui/icons-material";
 
 
 
-const CategoryTable = () => {
+const TagsTabel = () => {
 
     const columns = [
         {
             field: "name",
-            headerName: "Name",
+            headerName: "Tag Name",
             flex: 2,
         },
-
-        {
-            field: "createdAT",
-            headerName: "Created At",
-            flex: 1,
-        },
-
         {
             field: "status",
             headerName: "Status",
@@ -39,7 +33,11 @@ const CategoryTable = () => {
                 />
             ),
         },
-
+        {
+            field: "createdAT",
+            headerName: "Created At",
+            flex: 1,
+        },
         {
             field: "action",
             headerName: "Action",
@@ -56,10 +54,10 @@ const CategoryTable = () => {
 
                     {/* 👁 View */}
                     <button
-                        className="cursor-pointer primary-color hover:opacity-70 transition"
+                        className="cursor-pointer text-gray-500 hover:opacity-70 transition"
                         onClick={() => navigate(`/view-applicants/${params.row.id}`)}
                     >
-                        <Eye size={20} />
+                        <Trash size={20} />
                     </button>
                 </div>
             ),
@@ -67,13 +65,11 @@ const CategoryTable = () => {
     ];
 
     const categories = [
-        { id: 1, name: "Development", createdAT: "20-11-2025", status: "Active", active: true },
-        { id: 2, name: "IT", createdAT: "20-11-2025", status: "Active", active: true },
-        { id: 3, name: "Design", createdAT: "20-11-2025", status: "Inactive", active: true },
-        { id: 4, name: "Marketing", createdAT: "20-11-2025", status: "Active", active: true },
-        { id: 5, name: "Finance", createdAT: "20-11-2025", status: "Inactive", active: true },
-        { id: 6, name: "HR", createdAT: "20-11-2025", status: "Active" },
-        { id: 7, name: "Management", createdAT: "20-11-2025", status: "Active", active: true },
+        { id: 1, name: "Remote", createdAT: "20-11-2025", status: "Active", active: true },
+        { id: 2, name: "on site", createdAT: "20-11-2025", status: "Active", active: true },
+        { id: 3, name: "Full-Time", createdAT: "20-11-2025", status: "Inactive", active: true },
+        { id: 4, name: "Hybrid", createdAT: "20-11-2025", status: "Active", active: true },
+        { id: 5, name: "Freelancer", createdAT: "20-11-2025", status: "Inactive", active: true },
     ];
 
     return (
@@ -101,7 +97,7 @@ const CategoryTable = () => {
                         backgroundColor: "#4d179a"
                     }}
                 >
-                    Add Category
+                    Add Tag <Add />
                 </Button>
             </div>
 
@@ -129,4 +125,4 @@ const CategoryTable = () => {
 
 
 
-export default CategoryTable;
+export default TagsTabel;
