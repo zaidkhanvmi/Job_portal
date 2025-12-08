@@ -1,40 +1,26 @@
 import React from "react";
+import { Card, CardContent, Switch } from "@mui/material";
+import { Eye, Star, Plus, MoreHorizontal } from "lucide-react";
 import { DataGrid } from "@mui/x-data-grid";
-import { Card } from "@mui/material";
-import { Star, Eye } from "lucide-react";
-import { Chip } from "@mui/material";
-import { useNavigate } from "react-router-dom";
 
-const ApplicantsTable = ({ data }) => {
-    const navigate = useNavigate();
+
+
+const CategoryTable = () => {
+
+    const handleToggle = () => {
+
+    }
 
     const columns = [
         {
             field: "name",
             headerName: "Name",
-            flex: 1,
+            flex: 2,
         },
+
         {
-            field: "email",
-            headerName: "Email",
-            flex: 1,
-        },
-        {
-            field: "phone",
-            headerName: "Phone",
-            flex: 1,
-        },
-        {
-            field: "position",
-            headerName: "Applied Position",
-            flex: 1,
-            renderCell: (params) => (
-                <p className="font-semibold text-gray-800">{params.value}</p>
-            ),
-        },
-        {
-            field: "date",
-            headerName: "Applied Date",
+            field: "createdAT",
+            headerName: "Created At",
             flex: 1,
         },
 
@@ -43,22 +29,18 @@ const ApplicantsTable = ({ data }) => {
             headerName: "Status",
             flex: 1,
             renderCell: (params) => (
-                <select
-                    value={params.status}
-                    onChange={(e) =>
-                        params.api.setEditCellValue({
-                            id: params.id,
-                            field: "status",
-                            value: e.target.status,
-                        })
-                    }
-                    className="border rounded-md px-2 py-1 text-sm focus:outline-primary-color"
-                    style={{ background: "white" }}
-                >
-                    <option value="Pending">Pending</option>
-                    <option value="Approved">Approved</option>
-                    <option value="Rejected">Rejected</option>
-                </select>
+                <Switch
+                    checked={params.status}
+                    onChange={(e) => handleToggle(params.row.id, e.target.checked)}
+                    sx={{
+                        "& .MuiSwitch-switchBase.Mui-checked": {
+                            color: "#4d179a", // Color for the checked state
+                        },
+                        "& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track": {
+                            backgroundColor: "#4d179a", // Track color when checked
+                        },
+                    }}
+                />
             ),
         },
 
@@ -88,6 +70,16 @@ const ApplicantsTable = ({ data }) => {
         },
     ];
 
+    const categories = [
+        { id: 1, name: "Development", createdAT: "20-11-2025", status: "Active", active: true },
+        { id: 2, name: "IT", createdAT: "20-11-2025", status: "Active", active: true },
+        { id: 3, name: "Design", createdAT: "20-11-2025", status: "Inactive", active: true },
+        { id: 4, name: "Marketing", createdAT: "20-11-2025", status: "Active", active: true },
+        { id: 5, name: "Finance", createdAT: "20-11-2025", status: "Inactive", active: true },
+        { id: 6, name: "HR", createdAT: "20-11-2025", status: "Active" },
+        { id: 7, name: "Management", createdAT: "20-11-2025", status: "Active", active: true },
+    ];
+
     return (
         <Card
             sx={{
@@ -98,12 +90,15 @@ const ApplicantsTable = ({ data }) => {
                 boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
             }}
         >
-            <h2 className="text-xl primary-color font-semibold mb-3">
-                All Applicants ({data.length})
-            </h2>
+            <div className="flex flex-row items-center justify-between">
+                <h2 className="text-xl primary-color font-semibold mb-3">
+                    All Category ({categories.length})
+                </h2>
+                <button>Add Category</button>
+            </div>
 
             <DataGrid
-                rows={data}
+                rows={categories}
                 columns={columns}
                 disableColumnMenu
                 disableColumnResize
@@ -122,6 +117,8 @@ const ApplicantsTable = ({ data }) => {
             />
         </Card>
     );
-};
+}
 
-export default ApplicantsTable;
+
+
+export default CategoryTable;

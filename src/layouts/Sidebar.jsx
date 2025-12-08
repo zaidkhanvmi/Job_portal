@@ -113,7 +113,7 @@ const Sidebar = ({ open, toggleDrawer }) => {
                 sx={{
                     display: { xs: "block", sm: "none" },
                     "& .MuiDrawer-paper": {
-                        width: drawerWidth,
+                        width: "100%",
                     },
                 }}
             >

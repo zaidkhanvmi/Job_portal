@@ -9,22 +9,11 @@ import { useNavigate } from "react-router-dom";
 const JobsTable = () => {
     const { jobList } = useContext(JobContext);
 
-    const [rows, setRows] = useState(jobList);
-
     const handleToggle = (id, newValue) => {
-        setRows((prev) =>
-            prev.map((item) =>
-                item.id === id ? { ...item, active: newValue } : item
-            )
-        );
     };
 
     const handleEdit = (id) => {
         console.log(`Edit job: ${id}`);
-    };
-
-    const handleView = (id) => {
-        console.log(`View job: ${id}`);
     };
 
     const navigate = useNavigate();
@@ -55,14 +44,14 @@ const JobsTable = () => {
             flex: 1,
             renderCell: (params) => (
                 <Switch
-                    checked={params.value}
+                    checked={params.active}
                     onChange={(e) => handleToggle(params.row.id, e.target.checked)}
                     sx={{
                         "& .MuiSwitch-switchBase.Mui-checked": {
-                            color: "#4d179a",
+                            color: "#4d179a", // Color for the checked state
                         },
                         "& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track": {
-                            backgroundColor: "#4d179a",
+                            backgroundColor: "#4d179a", // Track color when checked
                         },
                     }}
                 />

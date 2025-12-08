@@ -1,9 +1,10 @@
 import React from 'react'
+import CategoryTable from '../../Components/Tables/CategoryTable'
 
 const Categories = () => {
     return (
         <div>
-            <h1 className='text-9xl'>This is Category Page</h1>
+            <CategoryTable />
         </div>
     )
 }
